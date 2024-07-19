@@ -4,10 +4,10 @@ metadata:
   name: nginx-proxy
   namespace: nginx-proxy
 spec:
-  type: LoadBalancer
-  ports:
-    - port: 80
-      targetPort: 80
-      protocol: TCP
   selector:
     app: nginx-proxy
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer

@@ -1,3 +1,4 @@
+# mariadb/deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -16,8 +17,14 @@ spec:
       containers:
         - name: mariadb
           image: mariadb:latest
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: rootpassword
+            - name: MYSQL_DATABASE
+              value: wordpress
+            - name: MYSQL_USER
+              value: wpuser
+            - name: MYSQL_PASSWORD
+              value: wordpresspassword
           ports:
             - containerPort: 3306
-          env:
-            - name: admin
-              value: root
